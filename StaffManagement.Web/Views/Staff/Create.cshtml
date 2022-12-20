@@ -1,0 +1,31 @@
+﻿@model StaffCreateRequest
+@{
+    ViewData["Title"] = "Create department";
+}
+
+<h1>Create staff</h1>
+
+@using (Html.BeginForm("Create", "Staff", null, FormMethod.Post, true, null))
+{
+
+    @Html.ExtendedDetailTextInput("Name", "", false);
+    @await Html.PartialAsync("selectDepartmentPartial", new Tuple<int, string>(1, "Not assigned"))
+
+    <div class="form-group row">
+        <div class="col-sm-12">
+            <button 
+                type="button" 
+                class="btn btn-secondary" 
+                onclick="location.href='@Url.Action("Index", "Department")'">
+                Cancel
+
+            </button>
+            <button type="submit" class="btn btn-success">Create</button>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial.cshtml")
+    <script src="~/js/createStaff_selectDepartment.js" type="module"></script>
+}

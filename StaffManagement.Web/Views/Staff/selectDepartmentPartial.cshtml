@@ -1,0 +1,20 @@
+﻿@model Tuple<int, string>
+@{
+    bool isViewMode = Convert.ToBoolean(ViewData["ViewMode"]);
+}
+
+<div class="form-group row">
+    <label for="departmentName" class="col-sm-2 col-form-label">Department</label>
+    <div class="col-sm-10">
+        <input type="hidden" name="departmentId" id="departmentId" value="@Model.Item1" />
+        <div class="input-group" id="departmentSelector">
+            <input type="text"
+                   name="departmentName"
+                   id="departmentName"
+                   class="@(isViewMode ? "form-control-plaintext" : "form-control")"
+                   value="@Model.Item2"
+                   readonly />
+        </div>
+        
+    </div>
+</div>

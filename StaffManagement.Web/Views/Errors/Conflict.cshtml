@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Mvc.ModelBinding;
+@model ModelStateDictionary
+@{
+    ViewData["Title"] = "Invalid input";
+}
+
+<h1>Oops.. Be careful of what you typed for</h1>
+<ul>
+
+    @foreach (var value in Model.Values)
+    {
+        if (value.Errors.Any())
+        {
+            @foreach (var err in value.Errors)
+            {
+                <li>@(err.ErrorMessage) Attempted value: @value.AttemptedValue</li>
+            }
+        }
+    }
+</ul>

@@ -1,0 +1,11 @@
+﻿@model DepartmentResponse;
+
+@{
+    ViewData["Title"] = Model.Name;
+    ViewData["ViewMode"] = true;
+}
+@await Html.PartialAsync("_detailPartial", Model)
+
+@section Scripts {
+    <script src="~/js/detailOperationButton.js" type="module"></script>
+}

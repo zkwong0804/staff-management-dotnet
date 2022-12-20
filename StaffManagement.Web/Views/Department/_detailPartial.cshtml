@@ -1,0 +1,24 @@
+﻿@model DepartmentResponse
+@{
+    bool isViewMode = Convert.ToBoolean(ViewData["ViewMode"]);
+}
+
+<h1>@Model.Name detail</h1>
+
+@using (Html.BeginForm((isViewMode ? string.Empty : "Update"), "Department",
+Model.Id, (isViewMode ? FormMethod.Get : FormMethod.Post), true, null))
+{
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden"
+       id="modelInfo"
+       @(isViewMode ? "data-isviewmode" : "")
+       data-name="@Model.Name"
+       data-operationurl="@Url.Action((isViewMode ? "Delete" : "Update"),
+       new{Id=Model.Id})" />
+    @Html.ExtendedDetailTextInput(nameof(Model.Id), Model.Id.ToString(), isViewMode)
+    @Html.ExtendedDetailTextInput(nameof(Model.Name), Model.Name, isViewMode)
+
+    @await Html.PartialAsync("_detailOperationPartial", Model.Id)
+
+
+}

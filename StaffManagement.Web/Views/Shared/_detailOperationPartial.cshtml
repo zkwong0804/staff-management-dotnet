@@ -1,0 +1,51 @@
+﻿@model int
+@{
+    bool isViewMode = Convert.ToBoolean(ViewData["ViewMode"]);
+}
+
+<div class="form-group row">
+    <div class="col-sm-12" id="btnContainer">
+        @if (isViewMode)
+        {
+            <button type="button"
+                class="btn btn-secondary"
+                onclick="location.href='@Url.Action("Index")'">
+                Back
+            </button>
+            <button type="button"
+                class="btn btn-warning"
+                onclick="location.href='@Url.Action("Update", new{Id=Model})'">
+                Update
+            </button>
+        }
+        else
+        {
+            <button type="button"
+                class="btn btn-secondary"
+                onclick="location.href='@Url.Action("Index")'">
+                Cancel
+            </button>
+            @*<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#updateModal">
+                Update
+            </button>
+
+            <div class="modal fade" id="updateModal" data-bs-backdrop="static" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Update</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to update <strong>@Model</strong>?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-danger">Yes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        }
+    </div>
+</div>
