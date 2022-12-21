@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StaffManagement.DataTransfer.Mapper;
 using StaffManagement.DataTransfer.Staff;
@@ -9,6 +10,7 @@ using System.Linq;
 
 namespace StaffManagement.Web.Controllers
 {
+    [Authorize]
     public class StaffController : Controller
     {
         private readonly IMapper<Staff, StaffResponse> _mapper;

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using StaffManagement.DataTransfer.Department;
 using StaffManagement.DataTransfer.Mapper;
 using StaffManagement.DataTransfer.Staff;
@@ -9,6 +10,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace StaffManagement.Web.Controllers
 {
+    [Authorize]
     public class DepartmentController : BaseController
     {
         private readonly IMapper<Department, DepartmentResponse> _mapper;
